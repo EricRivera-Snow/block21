@@ -119,14 +119,24 @@
 // console.log(todos);
 
 async function getTodos() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const json = await response.json();
-  return json;
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 async function init() {
-  const todos = await getTodos();
-  console.log(todos);
+  try {
+    const todos = await getTodos();
+    console.log(todos);
+    const firstItem = todos[0];
+    console.log(firstItem);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 init();
